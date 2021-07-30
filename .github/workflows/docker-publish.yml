@@ -15,7 +15,7 @@ env:
   # github.repository as <account>/<repo>
   # IMAGE_NAME: ${{ github.repository }}
   IMAGE_NAME: ptantiku/test-web
-
+  DEPLOY_URL: https://app.manage.proen.cloud/1.0/environment/control/rest/redeploycontainers
 
 jobs:
   build:
@@ -62,4 +62,4 @@ jobs:
       - name: redeploy new image
         uses: wei/curl@master
         with:
-          args: -X POST -d 'session=${{ secrets.SESSION_TOKEN }}&envName=${{ secrets.ENV_NAME }}&nodeGroup=cp&tag=latest' https://app.manage.ruk-com.cloud/1.0/environment/control/rest/redeploycontainers
+          args: -X POST -d 'session=${{ secrets.SESSION_TOKEN }}&envName=${{ secrets.ENV_NAME }}&nodeGroup=cp&tag=latest' ${{ env.DEPLOY_API }}
