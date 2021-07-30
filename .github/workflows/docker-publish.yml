@@ -62,4 +62,4 @@ jobs:
       - name: redeploy new image
         uses: wei/curl@master
         with:
-          args: -X POST -d 'session=${{ secrets.SESSION_TOKEN }}&envName=${{ secrets.ENV_NAME }}&nodeGroup=cp&tag=latest' ${{ env.DEPLOY_API }}
+          args: -X POST -d 'session=${{ secrets.SESSION_TOKEN }}&envName=${{ secrets.ENV_NAME }}&nodeGroup=cp&tag=latest' ${{ env.DEPLOY_URL }}
