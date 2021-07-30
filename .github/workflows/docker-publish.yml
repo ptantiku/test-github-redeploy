@@ -58,3 +58,8 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
+      - name: redeploy new image
+        uses: wei/curl@master
+        with:
+          args: -X POST -d 'session=${{ secrets.SESSION_TOKEN }}&envName=${{ secrets.ENV_NAME }}&nodeGroup=cp&tag=latest' https://app.manage.ruk-com.cloud/1.0/environment/control/rest/redeploycontainers
